@@ -72,7 +72,7 @@ namespace GAME14 {
 		Data.playerChara.offsetRight = 120.0f;
 		Data.playerChara.offsetBottom = 0.0f;
 		Data.player.imgSize = 0.4f;
-		Data.player.gravity = 9.8f;
+		Data.player.gravity = 588.0f;
 		Data.player.jumpSpeed.x = 400.0f;
 		Data.player.jumpSpeed.y = 700.0f;
 		Data.player.imgOffsetY = 270.0f;
@@ -102,7 +102,7 @@ namespace GAME14 {
 		Data.jumpPow.yardstickColor = COLOR(255, 255, 255);
 		Data.jumpPow.yardstickSize = 1.0f;
 		Data.jumpPow.numEqual = 5;
-		Data.jumpPow.powSpeed = 1.15f*delta;
+		Data.jumpPow.powSpeed = 1.15f;
 		Data.jumpPow.startDirectionTime = 0.1f;
 		Data.jumpPow.limitPow = 1;
 
