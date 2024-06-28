@@ -18,6 +18,9 @@ namespace GAME10
 		//fileスキャン
 		fileName = "..\\main\\assets\\game10\\map.txt";
 		CfileName = "..\\main\\assets\\game10\\tutorial.txt";
+		//効果音
+		FindSound = loadSound("..\\main\\assets\\game10\\findSound.wav");
+		MoveSound = loadSound("..\\main\\assets\\game10\\MoveSound.wav");
 		//画像スキャン
 		TitleImg = loadImage("..\\main\\assets\\game10\\title.png");
 		TutorialClearImg = loadImage("..\\main\\assets\\game10\\tutorialClear.png");
@@ -509,6 +512,7 @@ namespace GAME10
 
 	void GAME::tutorial() {
 		if(pauseFlag == true){
+			stopSound(MoveSound);
 			if (GetFlagCnt < GetFlagLimit) {
 				draw();
 				if (isTrigger(KEY_SPACE)) {
@@ -584,6 +588,17 @@ namespace GAME10
 		if (isPress(KEY_S) == false && isPress(KEY_W) == false) {
 			Cmy = 0;
 		}
+
+		if ((isPress(KEY_S) != false || isPress(KEY_W) != false || isPress(KEY_A) != false || isPress(KEY_D) != false) && SoundFlag == false) {
+			playSound(MoveSound);
+			SoundFlag = true;
+		}
+
+		if (isPress(KEY_S) == false && isPress(KEY_W) == false && isPress(KEY_A) == false && isPress(KEY_D) == false) {
+			SoundFlag = false;
+			stopSound(MoveSound);
+		}
+
 	}
 
 	void GAME::Emove() {
@@ -700,6 +715,7 @@ namespace GAME10
 						&& PlayerBox.up.y <= TutorialMap.Goal[g].WaPy + TutorialMap.Wmap.worldY + TutorialMap.Wmap.Ysize
 						&& PlayerBox.under.y >= TutorialMap.Goal[g].WaPy + TutorialMap.Wmap.worldY
 						&& player.KeyFlag == true) {
+						stopSound(MoveSound);
 						TutorialClearFlag = true;
 					}
 					else if (PlayerBox.right.x >= TutorialMap.Goal[g].WaPx + TutorialMap.Wmap.worldX
@@ -871,6 +887,7 @@ namespace GAME10
 			break;
 		}
 		if (FindFlag == true) {
+			stopSound(MoveSound);
 			STATE = RESULT;
 		}
 	}
@@ -1264,7 +1281,7 @@ namespace GAME10
 					image(KeyImg, ProductionMap.Key[Icnt].ItemCore.x + ProductionMap.Wmap.worldX - ProductionMap.Wmap.XharfSize, ProductionMap.Key[Icnt].ItemCore.y + ProductionMap.Wmap.worldY - ProductionMap.Wmap.YharfSize);
 				}
 			}
-			fill(255,0,0);
+			fill(0);
 			circle(player.Cpx, player.Cpy, player.radius);
 			if (player.KeyFlag == true) {
 				fill(255, 255, 0);

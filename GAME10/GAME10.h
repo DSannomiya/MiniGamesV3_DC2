@@ -55,6 +55,10 @@ namespace GAME10
         };
         matrix Production;
         matrix Tutorial;
+        //効果音
+            int FindSound = 0;
+            int MoveSound = 0;
+            bool SoundFlag = false;
         //画像
             //タイトル画面・リザルト画面
             int TitleImg = 0;
