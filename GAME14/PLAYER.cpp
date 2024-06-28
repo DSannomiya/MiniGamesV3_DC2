@@ -143,7 +143,6 @@ namespace GAME14 {
         }
         if (ActState == WAIT) {
             if (map->collisionGoalBottom(posX, Chara.worldPos.y, Chara.offsetRight)) {
-                ActState == CLEAR;
                 Player.clearFlag = true;
             }
         }

@@ -30,7 +30,7 @@ namespace GAME14 {
             Salmon.pos.y + Chara.offsetTop < player->Bottom()
             ) {
             Chara.hp = 0;
-            if (player->stacSalmon() % player->limitSalmon()) {
+            if (player->stacSalmon() <=player->limitSalmon()) {
                 player->countSalmon();
             }
         }

@@ -74,7 +74,7 @@ namespace GAME14 {
 		Data.player.imgSize = 0.4f;
 		Data.player.gravity = 588.0f;
 		Data.player.jumpSpeed.x = 400.0f;
-		Data.player.jumpSpeed.y = 700.0f;
+		Data.player.jumpSpeed.y = 710.0f;
 		Data.player.imgOffsetY = 270.0f;
 		Data.player.imgOffsetX = 120.0f;
 		Data.player.offsetTop = 90;
