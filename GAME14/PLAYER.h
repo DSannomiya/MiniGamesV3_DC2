@@ -7,8 +7,7 @@ namespace GAME14 {
         enum ACTION_STATE {
             WAIT,
             CROUCH,
-            JUMP,
-            CLEAR
+            JUMP
         };
         enum IMG_ID {
             WAIT_R,

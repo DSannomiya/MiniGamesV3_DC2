@@ -48,11 +48,11 @@ namespace GAME14 {
 		switch (CurState) {
 		case X_DIRECTION:
 			if (JumpPow.curPowX >= JumpPow.limitPow)JumpPow.curPowX -= JumpPow.limitPow;
-				JumpPow.curPowX = JumpPow.curPowX + JumpPow.powSpeed;
+				JumpPow.curPowX = JumpPow.curPowX + JumpPow.powSpeed*delta;
 			break;
 		case Y_DIRECTION:
 			if (JumpPow.curPowY >= JumpPow.limitPow)JumpPow.curPowY -= JumpPow.limitPow;
-			JumpPow.curPowY = JumpPow.curPowY + JumpPow.powSpeed;
+			JumpPow.curPowY = JumpPow.curPowY + JumpPow.powSpeed*delta;
 			JumpPow.endFlag = true;
 			break;
 		}

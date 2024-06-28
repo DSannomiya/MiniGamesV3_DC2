@@ -70,8 +70,8 @@ namespace GAME14 {
 
             break;
         case JUMP:
-            Player.curSpeed.y -= Player.gravity;
-            Chara.worldPos.y -= Player.curSpeed.y * delta;
+            Player.curSpeed.y -= Player.gravity*delta;
+            Chara.worldPos.y -= Player.curSpeed.y*delta;
             Chara.worldPos.x += Player.vecX * Player.curSpeed.x * delta;
             break;
         }
@@ -121,7 +121,7 @@ namespace GAME14 {
             blockY = ((int)Chara.worldPos.y+map->blockSizeY())/ map->blockSizeY() * map->blockSizeY();
             Chara.worldPos.y += blockY-(Chara.worldPos.y-Chara.offsetBottom);
 
-            Player.curSpeed.y = Player.gravity;
+            Player.curSpeed.y = 0;
 
         }
         //if ((Chara.worldPos.y - Chara.offsetTop <= 0)) {
@@ -136,13 +136,13 @@ namespace GAME14 {
             Chara.worldPos.y = blockY;
             Chara.worldPos.x = Player.curPos.x;
             Player.curSpeed.x = 0;
+            Player.curSpeed.y = 0;
             if(ActState==JUMP){
                 ActState = WAIT;
             }
         }
         if (ActState == WAIT) {
             if (map->collisionGoalBottom(posX, Chara.worldPos.y, Chara.offsetRight)) {
-                ActState == CLEAR;
                 Player.clearFlag = true;
             }
         }
