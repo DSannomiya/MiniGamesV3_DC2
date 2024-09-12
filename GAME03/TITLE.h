@@ -3,6 +3,7 @@
 #include"SCENE.h"
 #include"../MAIN/GAME_BASE.h"
 #include"../MAIN/MAIN.h"
+extern bool EscapeKeyValid;
 namespace GAME03 {
 	class TITLE :public SCENE {
 	private:

@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -91,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -133,20 +135,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ANIM.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdcpp17</LanguageStandard>
+    </ClCompile>
+    <ClCompile Include="ANIMS.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdcpp17</LanguageStandard>
+    </ClCompile>
+    <ClCompile Include="CHARACTER.cpp" />
+    <ClCompile Include="CHARACTER_MANAGER.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
+    <ClCompile Include="ENEMY.cpp" />
+    <ClCompile Include="EXPLANACHION.cpp" />
     <ClCompile Include="FADE.cpp" />
     <ClCompile Include="GAME03.cpp" />
     <ClCompile Include="GAME_OBJECT.cpp" />
+    <ClCompile Include="MAP.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="SCENE.cpp" />
+    <ClCompile Include="SELECT.cpp" />
+    <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="TITLE.cpp" />
     <ClCompile Include="VOLUME.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ANIM.h" />
+    <ClInclude Include="ANIMS.h" />
+    <ClInclude Include="CHARACTER.h" />
+    <ClInclude Include="CHARACTER_MANAGER.h" />
     <ClInclude Include="CONTAINER.h" />
+    <ClInclude Include="ENEMY.h" />
+    <ClInclude Include="EXPLANACHION.h" />
     <ClInclude Include="FADE.h" />
     <ClInclude Include="GAME03.h" />
     <ClInclude Include="GAME_OBJECT.h" />
+    <ClInclude Include="MAP.h" />
+    <ClInclude Include="PLAYER.h" />
     <ClInclude Include="SCENE.h" />
+    <ClInclude Include="SELECT.h" />
+    <ClInclude Include="STAGE.h" />
     <ClInclude Include="TITLE.h" />
     <ClInclude Include="VOLUME.h" />
   </ItemGroup>

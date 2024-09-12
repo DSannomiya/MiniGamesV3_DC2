@@ -8,6 +8,16 @@
     <ClCompile Include="SCENE.cpp" />
     <ClCompile Include="CONTAINER.cpp" />
     <ClCompile Include="VOLUME.cpp" />
+    <ClCompile Include="ANIMS.cpp" />
+    <ClCompile Include="ANIM.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="ENEMY.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="CHARACTER.cpp" />
+    <ClCompile Include="MAP.cpp" />
+    <ClCompile Include="CHARACTER_MANAGER.cpp" />
+    <ClCompile Include="SELECT.cpp" />
+    <ClCompile Include="EXPLANACHION.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME03.h" />
@@ -17,6 +27,16 @@
     <ClInclude Include="SCENE.h" />
     <ClInclude Include="CONTAINER.h" />
     <ClInclude Include="VOLUME.h" />
+    <ClInclude Include="ANIMS.h" />
+    <ClInclude Include="ANIM.h" />
+    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="ENEMY.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="CHARACTER.h" />
+    <ClInclude Include="MAP.h" />
+    <ClInclude Include="CHARACTER_MANAGER.h" />
+    <ClInclude Include="SELECT.h" />
+    <ClInclude Include="EXPLANACHION.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game03\title.txt" />

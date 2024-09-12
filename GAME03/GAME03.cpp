@@ -11,11 +11,15 @@ namespace GAME03
 	int GAME::create() {
 		Container = new CONTAINER();
 		Title = new TITLE(this);
+		Select = new SELECT(this);
+		Stage = new STAGE(this);
 		Fade = new FADE(this);
 		Volume = new VOLUME(this);
 
 		Container->load();
 		Title->create();
+		Select->create();
+		Stage->create();
 		Fade->create();
 		Volume->create();
 
@@ -29,6 +33,8 @@ namespace GAME03
 		delete Volume;
 		delete Fade;
 		delete Title;
+		delete Select;
+		delete Stage;
 		delete Container;
 	}
 

@@ -1,6 +1,7 @@
 #include"../../libOne/inc/graphic.h"
 #include"../../libOne/inc/input.h"
-#include "../../libOne/inc/libOne.h"
+#include "../../libOne/inc/sound.h"
+#include "../../libOne/inc/window.h"
 #include"../MAIN/GAME_BASE.h"
 #include "../MAIN/MAIN.h"
 #include"GAME03.h"
@@ -20,7 +21,7 @@ namespace GAME03 {
 	void VOLUME::draw() {
 
 		clear(250);
-		//image(Volume.backImg, 0, 0);
+		image(game()->container()->data().stage.backImg, 0, 0);
 		if (Volume.fileOnce) {
 			fopen_s(&fp, "assets/game03/data/volume.txt", "r");
 			if (fp != NULL) {
@@ -56,10 +57,10 @@ namespace GAME03 {
 				text((let)(int)Volume.volume2, width / 1.4f, height / 1.6f - (float)i * 1.0f);
 				textSize(40);
 				text("初期設定", width / 2.2f, height / 1.1f - (float)i * 1.0f);
-				text("Enterキーでタイトルに戻る", width / 1.5f, height / 1.00625f - (float)i * 1.0f);
+				text("Escキーでタイトルに戻る", width / 1.5f, height / 1.00625f - (float)i * 1.0f);
 			}
 			else {
-				fill(50.0f + (float)i * 10.0f, 30, 100, (float)i * 10);
+				fill(50.0f + (float)i * 10.0f, 100, (float)i * 10, 30);
 				strokeWeight(10.0f);
 				stroke(140.0f + (float)i * 10.0f, 90, 160, 120 - (float)i * 10);
 				line(width / 3.5f, height / 3.15f, width / 3.5f + 800.0f, height / 3.15f - (float)i * 2.0f);
@@ -74,7 +75,7 @@ namespace GAME03 {
 				text("初期設定", width / 2.2f, height / 1.1f - (float)i * 1.0f);
 				//text((let)mouseX, 10, height / 2.0f);
 				//text((let)mouseY, 10, height / 2.0f + 50);
-				text("Enterキーでタイトルに戻る", width / 1.5f, height / 1.00625f - (float)i * 1.0f);
+				text("Escキーでタイトルに戻る", width / 1.5f, height / 1.00625f - (float)i * 1.0f);
 			}
 		}
 		strokeWeight(5.0f);
@@ -193,11 +194,10 @@ namespace GAME03 {
 		clear();
 		rectMode(CORNER);
 		imageColor(Volume.backColor);
-		image(Volume.backImg, 0, 0);
 	}
 
 	void VOLUME::nextScene() {
-		if (isTrigger(KEY_ENTER)) {
+		if (isTrigger(KEY_ESCAPE)) {
 			fopen_s(&fp, "assets/game03/data/volume.txt", "w");
 			if (fp != NULL) {
 				fprintf_s(fp, "%d\n", (int)Volume.volume1);

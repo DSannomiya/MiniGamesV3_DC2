@@ -4,7 +4,6 @@ namespace GAME03 {
 	class VOLUME :public SCENE {
 	public:
 		struct DATA {
-			int backImg = 0;
 			int Snd_A = 0;
 			int Snd_B = 0;
 			int Snd_C = 0;
