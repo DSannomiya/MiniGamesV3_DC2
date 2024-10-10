@@ -7,6 +7,10 @@ namespace GAME03 {
 	public:
 		struct DATA {
 			int numPlayers = 0;
+			int numPlayerBullets = 0;
+			int numPumpkins = 0;
+			int numBats = 0;
+			int numBatBullets = 0;
 		};
 	private:
 		int Total = 0;

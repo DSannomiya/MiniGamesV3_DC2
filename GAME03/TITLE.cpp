@@ -21,8 +21,8 @@ namespace GAME03 {
 		clear(255);
 		rectMode(CORNER);
 		if (loopBgm) {
-			//playLoopSound(game()->container()->data().volume.Snd_A);
-			fopen_s(&fp, "assets/game03/data/volume.txt", "r");
+			playLoopSound(game()->container()->data().volume.Snd_A);
+			fopen_s(&fp, "assets/game03/data/sounds/volume.txt", "r");
 			if (fp != NULL) {
 				fscanf_s(fp, "%d\n%d\n", &f1, &f2);
 				fclose(fp);
@@ -108,7 +108,7 @@ namespace GAME03 {
 				reset = false;
 			}
 			else if (isTrigger(KEY_N)) {
-				//playSound(game()->container()->data().volume.Se_E);
+				playSound(game()->container()->data().volume.Se_E);
 				reset = false;
 			}
 		}
@@ -117,30 +117,31 @@ namespace GAME03 {
 	void TITLE::nextScene() {
 		if (!reset) {
 			if (isTrigger(KEY_SPACE)) {
+				playSound(game()->container()->data().volume.Se_E);
 				game()->setCurScene(game()->select());
 			}
 			if (isTrigger(KEY_O)) {
 				game()->fade()->outTrigger();
 				delibe = 1;
-				//playSound(game()->container()->data().volume.Se_D);
+				playSound(game()->container()->data().volume.Se_E);
 			}
 			if (isTrigger(KEY_P)) {
 				game()->fade()->outTrigger();
 				delibe = 2;
-				//playSound(game()->container()->data().volume.Se_D);
+				playSound(game()->container()->data().volume.Se_E);
 			}
 			if (isTrigger(KEY_ESCAPE)) {
 				game()->backToMenu();
 				EscapeKeyValid = true;
-				//playSound(game()->container()->data().volume.Se_E);
+				playSound(game()->container()->data().volume.Se_D);
 			}
 			if (game()->fade()->outEndFlag() && delibe == 1) {
-				//stopSound(game()->container()->data().volume.Snd_A);
+				stopSound(game()->container()->data().volume.Snd_A);
 				game()->setCurScene(game()->volume());
 			}
 			if (game()->fade()->outEndFlag() && delibe == 2) {
-				//stopSound(game()->container()->data().volume.Snd_A);
-				//game()->setCurScene(game()->volume());
+				stopSound(game()->container()->data().volume.Snd_A);
+				game()->setCurScene(game()->explan());
 			}
 		}
 	}

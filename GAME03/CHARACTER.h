@@ -14,6 +14,7 @@ namespace GAME03 {
 			int shadowImg = 0;
 			COLOR color;
 			char charaId = 0;
+			char filename[64]{};
 			float wx = 0;
 			float wy = 0;
 			float vx = 0;

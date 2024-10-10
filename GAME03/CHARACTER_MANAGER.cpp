@@ -24,6 +24,10 @@ namespace GAME03 {
 
 		Total = 0;
 		Total += CharaMng.numPlayers;
+		//Total += CharaMng.numPlayerBullets;
+		//Total += CharaMng.numBats;
+		//Total += CharaMng.numBatBullets;
+		//Total += CharaMng.numPumpkins;
 		Characters = new CHARACTER * [Total + 1];
 
 		Player = new PLAYER(game());

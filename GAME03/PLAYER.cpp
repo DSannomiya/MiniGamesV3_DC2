@@ -8,16 +8,16 @@
 #include <time.h>
 namespace GAME03 {
 	void PLAYER::create() {
-		Chara = game()->container()->data().playerChara;
+		DeterPlayer = game()->container()->data().select.deterPlayer;
+		Chara = game()->container()->data().playerChara1;
 		Player = game()->container()->data().player;
 	}
 	void PLAYER::appear(float wx, float wy, float vx, float vy) {
-		Chara.hp = game()->container()->data().playerChara.hp;
+		Chara.hp = game()->container()->data().playerChara1.hp;
 		Chara.wx = wx;
 		Chara.wy = wy;
 		Chara.animId = Player.rightAnimId;
-		Chara.speed = 3.4f * 60;
-		Player.jumpFlag = 0;
+		Chara.speed = 3.4f * 100;
 		time(&Player.s_time);
 		Player.e_time = Player.s_time + 200;
 		time(&Player.n_time);
@@ -31,41 +31,29 @@ namespace GAME03 {
 	}
 	void PLAYER::Move() {
 		if (State != STATE::DIED) {
-			if (Player.jumpFlag == 0 && isTrigger(KEY_SPACE)) {
-				Chara.vy = Player.initVecUp;
-				Player.jumpFlag = 1;
-				playSound(game()->container()->data().volume.Se_A);
-			}
-			if (Player.jumpFlag == 1) {
-				Chara.vy += Player.gravity * delta;
-				Chara.wy += Chara.vy * 60 * delta;
-			}
-			if (Player.jumpFlag == 1 && isTrigger(KEY_SPACE)) {
-				Chara.vy = Player.initVecUp;
-				Player.jumpFlag = 1;
-				playSound(game()->container()->data().volume.Se_A);
-			}
 			Chara.vx = 0.0f;
+			Chara.vy = 0.0f;
 			if (isPress(KEY_A)) {
 				Chara.vx = -Chara.speed * delta;
 				Chara.animId = Player.leftAnimId;
-				if (isPress(MOUSE_LBUTTON)) {
-					Chara.vx += -Chara.speed * delta;
-					Chara.animId += Player.leftAnimId;
-				}
 			}
 			if (isPress(KEY_D)) {
 				Chara.vx = Chara.speed * delta;
 				Chara.animId = Player.rightAnimId;
-				if (isPress(MOUSE_LBUTTON)) {
-					Chara.vx += Chara.speed * delta;
-					Chara.animId += Player.rightAnimId;
-				}
+			}
+			if (isPress(KEY_W)) {
+				Chara.vy = -Chara.speed * delta;
+				Chara.animId;
+			}
+			if (isPress(KEY_S)) {
+				Chara.vy = Chara.speed * delta;
+				Chara.animId;
 			}
 		}
 		Player.curWx = Chara.wx;
-		if (Chara.vx != 0.0f) {
+		if (Chara.vx != 0.0f || Chara.vy != 0.0f) {
 			Chara.wx += Chara.vx;
+			Chara.wy += Chara.vy;
 		}
 		else {
 			Chara.animData.imgIdx = 0;
@@ -95,12 +83,10 @@ namespace GAME03 {
 			Chara.vy = Player.initVecDown;
 		}
 		if (map->collisionCharaBottom(Player.curWx, Chara.wy)) {
-			Player.jumpFlag = 0;
 			Chara.vy = 0.0f;
 			Chara.wy = (int)(Chara.wy / map->chipSize()) * (float)map->chipSize();
 		}
 		else {
-			Player.jumpFlag = 1;
 		}
 	}
 	void PLAYER::CheckState() {

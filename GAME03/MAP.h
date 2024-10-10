@@ -22,7 +22,11 @@ namespace GAME03 {
             float centerX = 0;
         };
         enum CHARA_ID {
-            PLAYER_ID = 'a',
+            PLAYER1_ID = 'a',
+            PLAYER2_ID = 'a',
+            PLAYER3_ID = 'a',
+            PLAYER4_ID = 'a',
+            PLAYER5_ID = 'a',
         };
     private:
         DATA Map;

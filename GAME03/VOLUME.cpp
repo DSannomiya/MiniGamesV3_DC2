@@ -23,7 +23,7 @@ namespace GAME03 {
 		clear(250);
 		image(game()->container()->data().stage.backImg, 0, 0);
 		if (Volume.fileOnce) {
-			fopen_s(&fp, "assets/game03/data/volume.txt", "r");
+			fopen_s(&fp, "assets/game03/data/sounds/volume.txt", "r");
 			if (fp != NULL) {
 				fscanf_s(fp, "%f\n%f\n", &Volume.volume1, &Volume.volume2);
 				fclose(fp);
@@ -198,7 +198,7 @@ namespace GAME03 {
 
 	void VOLUME::nextScene() {
 		if (isTrigger(KEY_ESCAPE)) {
-			fopen_s(&fp, "assets/game03/data/volume.txt", "w");
+			fopen_s(&fp, "assets/game03/data/sounds/volume.txt", "w");
 			if (fp != NULL) {
 				fprintf_s(fp, "%d\n", (int)Volume.volume1);
 				fprintf_s(fp, "%d\n", (int)Volume.volume2);
@@ -206,7 +206,7 @@ namespace GAME03 {
 			}
 			stopSound(Volume.Snd_C);
 			game()->fade()->outTrigger();
-			playSound(game()->container()->data().volume.Se_E);
+			playSound(game()->container()->data().volume.Se_D);
 		}
 		if (game()->fade()->outEndFlag()) {
 			game()->setCurScene(game()->title());

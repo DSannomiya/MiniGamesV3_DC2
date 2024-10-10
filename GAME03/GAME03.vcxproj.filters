@@ -40,5 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\MAIN\assets\game03\title.txt" />
+    <Text Include="map.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

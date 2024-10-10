@@ -7,7 +7,6 @@ namespace GAME03 {
         struct DATA {
             int rightAnimId = 0;
             int leftAnimId = 1;
-            int jumpFlag = 0;
             int score = 0;
             int newscore = 0;
             int upDate = false;
@@ -36,6 +35,7 @@ namespace GAME03 {
         bool survived() const;
         float overCenterVx();
         int timeCnt = 0;
+        int DeterPlayer = 0;
     };
 }
 

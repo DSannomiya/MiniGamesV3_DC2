@@ -27,22 +27,18 @@ namespace GAME03 {
 	}
 	void STAGE::draw() {
 		if (loopBgm) {
-			playLoopSound(game()->container()->data().volume.Snd_B);
+			//playLoopSound(game()->container()->data().volume.Snd_B);
 			loopBgm = false;
 		}
 		BackGround();
 		game()->map()->draw();
 		game()->characterManager()->draw();
 		if (game()->characterManager()->player()->died()) {
-			Logo(Stage.gameOverImg, Stage.gameOverColor);
+			//Logo(Stage.gameOverImg, Stage.gameOverColor);
 		}
 		else if (game()->characterManager()->player()->survived()) {
-			image(game()->container()->data().playerChara.shadowImg, -2500, -1800);
-			Logo(Stage.stageClearImg, Stage.stageClearColor);
-			if (game()->container()->data().player.upDate) {
-				fill(255);
-				text("HIGH SCOREXV!!!!!", width / 3, height / 2);
-			}
+			//image(game()->container()->data().playerChara.shadowImg, -2500, -1800);
+			//Logo(Stage.stageClearImg, Stage.stageClearColor);
 		}
 		else {
 			time(&Stage.n_time);
@@ -63,13 +59,14 @@ namespace GAME03 {
 		image(Stage.backImg, 0, 0);
 	}
 	void STAGE::Logo(int img, const COLOR& color) {
-		imageColor(color);
-		image(img, Stage.logoPx, Stage.logoPy);
+		//imageColor(color);
+		//image(img, Stage.logoPx, Stage.logoPy);
 		Stage.backToTitleTime -= delta;
 	}
 	void STAGE::nextScene() {
-		if (Stage.backToTitleTime <= 0) {
-			stopSound(game()->container()->data().volume.Snd_B);
+		//if (Stage.backToTitleTime <= 0) {
+		if (isTrigger(KEY_ENTER)) {
+			//stopSound(game()->container()->data().volume.Snd_B);
 			game()->fade()->outTrigger();
 		}
 		if (game()->fade()->outEndFlag()) {

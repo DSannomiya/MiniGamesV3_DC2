@@ -12,10 +12,12 @@ namespace GAME03 {
         class SCENE* CurScene = nullptr;
         class STAGE* Stage = nullptr;
         class SELECT* Select = nullptr;
+        class EXPLANACHION* Explan = nullptr;
         class FADE* Fade = nullptr;
         class VOLUME* Volume = nullptr;
     public:
         class TITLE* title() { return Title; }
+        class EXPLANACHION* explan() { return Explan; }
         class SELECT* select() { return Select; }
         class STAGE* stage() { return Stage; }
         class FADE* fade() { return Fade; }
