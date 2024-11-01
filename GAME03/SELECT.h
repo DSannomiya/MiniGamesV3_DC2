@@ -11,6 +11,7 @@ namespace GAME03 {
 		struct DATA {
 			int select_cfream = 0;
 			int select_chara = 0;
+			int chara_img[5]{};
 			int select_sfream = 0;
 			int select_stage = 0;
 			int numPlayer = false;

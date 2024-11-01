@@ -34,6 +34,7 @@ namespace GAME03 {
         bool died();
         bool survived() const;
         float overCenterVx();
+        float overCenterVy();
         int timeCnt = 0;
         int DeterPlayer = 0;
     };

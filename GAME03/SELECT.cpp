@@ -123,6 +123,8 @@ namespace GAME03 {
 						}
 					}
 					image(Select.select_chara, width / 5.1f + 200 * j, height / 11.0f + 200 * i);
+					imageColor(240);
+					image(Select.chara_img[i], width / 4.3f + 200 * j, height / 6.5f + 200 * i , 0 , 1.5f);
 				}
 			}
 		}

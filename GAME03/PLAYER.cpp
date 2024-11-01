@@ -19,8 +19,8 @@ namespace GAME03 {
 		Chara.animId = Player.rightAnimId;
 		Chara.speed = 3.4f * 100;
 		time(&Player.s_time);
-		Player.e_time = Player.s_time + 200;
 		time(&Player.n_time);
+		Player.e_time = Player.n_time - Player.s_time;
 		State = STATE::STRUGGLING;
 		timeCnt = 0;
 	}
@@ -33,19 +33,24 @@ namespace GAME03 {
 		if (State != STATE::DIED) {
 			Chara.vx = 0.0f;
 			Chara.vy = 0.0f;
-			if (isPress(KEY_A)) {
+			if (isPress(KEY_A) || isPress(KEY_LEFT)) {
 				Chara.vx = -Chara.speed * delta;
 				Chara.animId = Player.leftAnimId;
 			}
-			if (isPress(KEY_D)) {
+			if (isPress(KEY_D) || isPress(KEY_RIGHT)) {
 				Chara.vx = Chara.speed * delta;
 				Chara.animId = Player.rightAnimId;
 			}
-			if (isPress(KEY_W)) {
-				Chara.vy = -Chara.speed * delta;
+			if (isPress(KEY_W) || isPress(KEY_UP)) {
+				if (Chara.wy < 560) {
+					Chara.wy += 0.0f;
+				}
+				else {
+					Chara.vy = -Chara.speed * delta;
+				}
 				Chara.animId;
 			}
-			if (isPress(KEY_S)) {
+			if (isPress(KEY_S) || isPress(KEY_DOWN)) {
 				Chara.vy = Chara.speed * delta;
 				Chara.animId;
 			}
@@ -59,13 +64,9 @@ namespace GAME03 {
 			Chara.animData.imgIdx = 0;
 			Chara.animData.elapsedTime = -delta;
 		}
-		if (Player.e_time <= Player.n_time) {
+		if (Chara.hp == 0 && Player.e_time < 30) {
 			Chara.speed = 0.0f;
 		}
-		if (isPress(KEY_C) && isPress(KEY_V) && isPress(KEY_B)) {
-			Chara.wx = 0.1f;
-			Chara.wy = 250.0f;
-		}//debug
 	}
 	void PLAYER::CollisionWithMap() {
 		MAP* map = game()->map();
@@ -92,29 +93,13 @@ namespace GAME03 {
 	void PLAYER::CheckState() {
 		time(&Player.n_time);
 		if (isPress(KEY_SHIFT) && isPress(KEY_ENTER) && timeCnt == 0) {
-			Player.e_time = Player.n_time;
-			timeCnt++;
+			State = STATE::DIED;
 		}//debug
-		if (Player.e_time == Player.n_time) {
+		if (Chara.hp == 0 && Player.e_time < 30) {
 			State = STATE::DIED;
 			playSound(game()->container()->data().volume.Se_C);
 		}
-		if (Chara.wx < 0.0f && Chara.wy >= 250.0f) {
-			Player.newscore = (int)(Player.e_time - Player.n_time) * 5000;
-			fopen_s(&fp, "assets/game03/data/score.txt", "r");
-			if (fp != NULL) {
-				fscanf_s(fp, "%d", &Player.score);
-				fclose(fp);
-				if (Player.score < Player.newscore) {
-					Player.score = Player.newscore;
-					Player.upDate = true;
-				}
-			}
-			fopen_s(&fp, "assets/game03/data/score.txt", "w");
-			if (fp != NULL) {
-				fprintf_s(fp, "%d", Player.score);
-				fclose(fp);
-			}
+		if (Chara.hp > 0 && Player.e_time >= 30) {
 			State = STATE::SURVIVED;
 			playSound(game()->container()->data().volume.Se_B);
 			Chara.hp = 0;
@@ -131,10 +116,13 @@ namespace GAME03 {
 		return State == STATE::SURVIVED;
 	}
 	float PLAYER::overCenterVx() {
-		float centerWx = (game()->map()->wx() + width / 2.0f - game()->map()->chipSize() / 2.0f);
-		float overCenterVx = Chara.wx - centerWx;
-		//if (overCenterVx < 0 )overCenterVx = 0.0f;
+		float overCenterVx = Chara.wx - (game()->map()->wx() + width / 2.0f);
 		if (Chara.hp == 0)overCenterVx = 0;
 		return overCenterVx;
+	}
+	float PLAYER::overCenterVy() {
+		float overCenterVy = Chara.wy - (game()->map()->wy() + height / 2.0f);
+		if (Chara.hp == 0)overCenterVy = 0;
+		return overCenterVy;
 	}
 }

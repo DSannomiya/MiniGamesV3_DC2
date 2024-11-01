@@ -40,7 +40,6 @@ namespace GAME03 {
         else {
             image(Chara.img, px, py, Chara.angle, Chara.scale);
         }
-        image(Chara.shadowImg, px - 3440, py - 2050);
         if (isPress(KEY_P)) {
             fill(255);
             print((let)game()->map()->wDispRight());

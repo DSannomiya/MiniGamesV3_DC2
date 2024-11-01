@@ -19,6 +19,7 @@ namespace GAME03 {
     }
     void CONTAINER::CreateData() {
 
+        Data.stage.backToTitleTime = 2;
 
         Data.map.fileName = "..\\main\\assets\\game03\\data\\map.txt";
         Data.map.chipSize = 50;
@@ -62,12 +63,12 @@ namespace GAME03 {
         Data.select.targetPath = "..\\main\\assets\\game03\\data\\player";
 
     }
-    void CONTAINER::LoadGraphics(){
+    void CONTAINER::LoadGraphics() {
 
         Data.map.blockImg = loadImage("..\\main\\assets\\game03\\data\\block.png");
         Data.stage.backImg = loadImage("..\\main\\assets\\game03\\data\\back_Img.png");
         Data.select.select_cfream = loadImage("..\\main\\assets\\game03\\data\\select_chara_fream.png");
-        Data.select.select_sfream= loadImage("..\\main\\assets\\game03\\data\\select_stage_fream.png");
+        Data.select.select_sfream = loadImage("..\\main\\assets\\game03\\data\\select_stage_fream.png");
         Data.select.select_chara = loadImage("..\\main\\assets\\game03\\data\\select_chara.png");
         Data.select.select_stage = loadImage("..\\main\\assets\\game03\\data\\select_stage.png");
         char filename[64]{};
@@ -91,15 +92,19 @@ namespace GAME03 {
                 break;
             }
         }
+        for (int i = 0; i < 5; i++) {
+            sprintf_s(filename, "..\\main\\assets\\game03\\data\\player\\Player%d\\1\\playerL00.png", i + 1);
+            Data.select.chara_img[i] = loadImage(filename);
+        }
     }
 
     void CONTAINER::LoadBgms() {
-        Data.volume.Snd_A;//= loadSound("..\\main\\assets\\game03\\sounds\\.wav");
-        Data.volume.Snd_B;//= loadSound("..\\main\\assets\\game03\\sounds\\.wav");
-        Data.volume.Snd_C;//= loadSound("..\\main\\assets\\game03\\sounds\\.wav");
-        Data.volume.Snd_D;//= loadSound("..\\main\\assets\\game03\\sounds\\.wav");
-        Data.volume.Se_A;//= loadSound("..\\main\\assets\\game03\\sounds\\.wav");
-        Data.volume.Se_B;//= loadSound("..\\main\\assets\\game03\\sounds\\.wav");
+        Data.volume.Snd_A;// = loadSound("..\\main\\assets\\game03\\sounds\\.wav");
+        Data.volume.Snd_B;// = loadSound("..\\main\\assets\\game03\\sounds\\.wav");
+        Data.volume.Snd_C;// = loadSound("..\\main\\assets\\game03\\sounds\\.wav");
+        Data.volume.Snd_D;// = loadSound("..\\main\\assets\\game03\\sounds\\.wav");
+        Data.volume.Se_A;// = loadSound("..\\main\\assets\\game03\\sounds\\.wav");
+        Data.volume.Se_B;// = loadSound("..\\main\\assets\\game03\\sounds\\.wav");
         Data.volume.Se_C = loadSound("..\\main\\assets\\game03\\data\\sounds\\switch_task.wav");
         Data.volume.Se_D = loadSound("..\\main\\assets\\game03\\data\\sounds\\close_win.wav");
         Data.volume.Se_E = loadSound("..\\main\\assets\\game03\\data\\sounds\\open_win.wav");
